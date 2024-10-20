@@ -18,8 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:push": "prisma db push --schema=./src/prisma/schema/schema.prisma",
-    "prisma:generate": "prisma generate --schema=./src/prisma/schema/schema.prisma"
+    "postinstall": "npx prisma generate --schema=./src/prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema=./src/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./src/prisma/schema.prisma"
   },
   "dependencies": {
     "@apollo/server": "^4.11.0",
