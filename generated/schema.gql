@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Warehouse {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  warehouses: [Warehouse!]
+  warehouse(id: ID!): Warehouse
+}
+
+type Mutation {
+  createWarehouse(input: CreateWarehouseInput!): Warehouse
+  updateWarehouse(input: UpdateWarehouseInput!): Warehouse
+  removeWarehouse(id: ID!): Warehouse
+}
+
+input CreateWarehouseInput {
+  name: String!
+}
+
+input UpdateWarehouseInput {
+  id: ID!
+}
