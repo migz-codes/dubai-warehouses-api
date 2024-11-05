@@ -1,10 +1,7 @@
-import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
-import cookieParser from 'cookie-parser'
-import serverlessExpress from '@vendia/serverless-express'
-import { Callback, Context, Handler } from 'aws-lambda'
-
 import { AppModule } from './app.module'
+import serverlessExpress from '@vendia/serverless-express'
+import { Handler, Context, Callback } from 'aws-lambda'
 
 let server: Handler
 
@@ -12,9 +9,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
   app.setGlobalPrefix('api')
+  app.enableCors()
 
-  app.useGlobalPipes(new ValidationPipe())
-  app.use(cookieParser())
   await app.init()
 
   const expressApp = app.getHttpAdapter().getInstance()
